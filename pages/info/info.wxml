@@ -1,0 +1,53 @@
+<!--pages/info/info.wxml-->
+<view class="page">
+  <view bindtap="toInfos" class="nav-title">
+    <image class="app-logo" src="../../img/app_logo.png" mode="cover"></image>
+    <text>更多</text>
+  </view>
+  <view class="page__bd">
+    <view class="weui-article">
+      <view class="weui-article__h1">{{info.title}}</view>
+      <view class="weui-article__section">
+        <view class="weui-media-box weui-media-box_text">
+          <view class="weui-media-box__info">
+            <view class="weui-media-box__info__meta">{{info.nick_name}}</view>
+            <button wx:if="{{userid==info.userid}}" class="weui-article__h3" bindtap="editInfo" id="{{info.infoid}}">编辑此条信息</button>
+          </view>
+          <view class="weui-media-box__info">
+            <view wx:if="{{info.can_sale}}" class="weui-media-box__info__meta">￥ {{info.sale_price}}</view>
+            <view wx:if="{{info.can_exchange}}" class="weui-media-box__info__meta">交换</view>
+            <view wx:if="{{info.can_give}}" class="weui-media-box__info__meta">赠与</view>
+          </view>
+        </view>
+        <view class="weui-article__section">
+
+          <view class="weui-article__p">
+            <view class="txt__section"><text>{{info.txt}}</text></view>
+          </view>
+          <view class="weui-article__p">
+            <block wx:for="{{info.imgs}}" wx:key="this">
+              <image bindtap="previewImage" class="weui-article__img" src="{{item}}" mode="aspectFit" id="{{index}}" />
+            </block>
+          </view>
+          <view class="actions">
+    <button session-from="mydata" bindcontact="kefu"
+      show-message-card="true" send-message-title="关于" send-message-path="卡片路径" send-message-img="卡片截图"
+      open-type="contact">联系{{info.nick_name}}</button>
+    </view>
+          <view class="weui-article__p">
+            <block wx:for="{{comments}}" wx:key="this">
+            <view class="weui-media-box__info">
+              <view class="weui-media-box__info__meta">
+                <image class="avatar" src="{{item.avatar_url}}" mode="aspectFit" id="{{index}}" />
+                </view>
+              <text class="weui-media-box__info__meta">{{item.comment}}</text>
+              <text class="weui-media-box__info__meta">{{item.formattime}}</text>
+            </view>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+</view>

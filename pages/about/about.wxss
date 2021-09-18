@@ -1,0 +1,42 @@
+/* pages/about/about.wxss */
+.appinfo {
+  margin-top: 200rpx;
+  width: 300rpx;
+  height: 300rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #777777;
+  border: 2rpx solid darkgreen ;
+  border-radius: 50%;
+}
+
+.app-logo {
+  overflow: hidden;
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.motto {
+  font-size: 1.2em;
+  margin-top: 60rpx;
+  margin-left: 60rpx;
+  margin-right: 60rpx;
+  margin-bottom: 20rpx;
+}
+.wx-login{
+  font-size: 26rpx;
+  padding: 0 32rpx;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+.desc{
+  padding: 0 64rpx;
+}
+.ava{
+  display: inline-block;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+}

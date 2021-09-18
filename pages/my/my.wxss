@@ -1,0 +1,8 @@
+/* pages/my/my.wxss */
+.btn-grid{
+  margin: 64rpx;
+  padding-top: 100;
+}
+button{
+  margin: 60rpx 0;
+}

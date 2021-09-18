@@ -1,0 +1,25 @@
+<!--index.wxml-->
+<view class="container">
+  <view bindtap="toHome" class="appinfo">
+    <image class="app-logo" src="../../img/app_logo.png" mode="cover"></image>
+    <text class="title">{{appInfo.title}}</text>
+  </view>
+
+  <view class="motto">
+    <text user-select="false">{{appInfo.motto}}</text>
+    <progress bindactiveend="buttonShow" percent="{{progre}}" active active-mode="forwards" />
+  </view>
+
+  <block wx:if="{{ani == 'done' && isLogin == true}}">
+    <button wx:if="{{isLogin}}" bindtap="toMy"> 断舍离 </button>
+  </block>
+
+</view>
+<block wx:if="{{ani == 'done' && isLogin == false}}">
+  <view class="wx-login">
+    <view class="desc">
+    <open-data type="userNickName" lang="zh_CN"></open-data>，展示会用到头像<view class="ava"><open-data type="userAvatarUrl"></open-data></view>请
+    </view>
+    <button wx:if="{{!isLogin}}" bindtap="wxupdate"> 使用微信授权登录 </button>
+  </view>
+</block>

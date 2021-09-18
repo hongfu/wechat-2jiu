@@ -1,0 +1,29 @@
+/* pages/info/info.wxss */
+.page_bd{
+  padding: 32rpx;
+}
+
+.txt__section{
+  padding: 32rpx;
+}
+
+.weui-media-box__info {
+  margin-top: 32rpx;
+  padding-bottom: 4rpx;
+  font-size: 1em;
+  line-height: 1em;
+  list-style: none;
+  overflow: hidden;
+}
+.comment{
+  display: flex;
+  flex-direction: row;
+  font-size: 26rpx;
+  padding: 8rpx;
+}
+.avatar{
+  width: 50rpx;
+  height: 50rpx;
+  margin: 8rpx 24rpx;
+  border-radius: 50%;
+}

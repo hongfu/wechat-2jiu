@@ -1,0 +1,97 @@
+<!--liuyan.wxml-->
+<view class="page-body">
+  <view bindtap="toMy" class="nav-title">
+    <image bindtap="bindViewTap" class="app-logo" src="../../img/app_logo.png" mode="cover"></image>
+    <text class="userinfo-nickname">信息录入</text>
+  </view>
+  <view class="page-section">
+    <view class="weui-cells__title"><text class="weui-badge weui-badge_dot"></text>标题({{title_length}}/30)</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input id="title" bindinput="someInput" class="weui-input" value="{{title}}" auto-focus placeholder="输入标题文字" maxlength="30" />
+      </view>
+    </view>
+  </view>
+  <view class="page-section">
+    <view class="weui-cells__title"><text class="weui-badge weui-badge_dot"></text>描述({{txt_length}}/150)</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <textarea value="{{txt}}" id="txt" bindinput="someInput" auto-height placeholder="在这里添加描述" maxlength="150" />
+      </view>
+    </view>
+  </view>
+  <view class="page-section">
+    <view class="weui-cells__title"><text class="weui-badge weui-badge_dot"></text>图片上传({{imgs_length}}/5)</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-uploader__bd">
+        <view class="weui-uploader__files" id="uploaderFiles">
+          <block wx:for="{{imgs}}" wx:key="*this">
+            <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+              <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+            </view>
+          </block>
+        </view>
+        <view class="weui-uploader__input-box">
+          <view class="weui-uploader__input" bindtap="chooseImg"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="page-section">
+    <view class="weui-cells__title">设置</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_active weui-cell_switch">
+        <view class="weui-cell__bd">可以转出</view>
+        <view class="weui-cell__ft">
+          <label class="weui-switch-cp">
+            <switch id="can_sale" bindchange="someInput" class="weui-switch-cp__input" checked="{{can_sale}}" />
+            <view class="weui-switch-cp__box"></view>
+          </label>
+        </view>
+      </view>
+      <view wx:if="{{can_sale}}" class="weui-cell weui-cell_active">
+        <view class="weui-cell__hd">
+          <view class="weui-label">转出价格</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" type="number" value="{{sale_price}}" id="sale_price" bindinput="someInput" placeholder-class="weui-input__placeholder"
+            placeholder="请输入价格" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_active weui-cell_switch">
+        <view class="weui-cell__bd">可以交换</view>
+        <view class="weui-cell__ft">
+          <label class="weui-switch-cp">
+            <switch id="can_exchange" bindchange="someInput" class="weui-switch-cp__input" checked="{{can_exchange}}" />
+            <view class="weui-switch-cp__box"></view>
+          </label>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_active weui-cell_switch">
+        <view class="weui-cell__bd">可以赠送</view>
+        <view class="weui-cell__ft">
+          <label class="weui-switch-cp">
+            <switch id="can_give" bindchange="someInput" class="weui-switch-cp__input" checked="{{can_give}}" />
+            <view class="weui-switch-cp__box"></view>
+          </label>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="page-section">
+    <view class="weui-cell weui-cell_active">
+      <view class="weui-cell__hd">
+        <view class="weui-label"><text class="weui-badge weui-badge_dot"></text>口令</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" value="{{kouling}}" id="kouling" bindinput="someInput" placeholder-class="weui-input__placeholder"
+          placeholder="请输入口令" />
+      </view>
+    </view>
+  </view>
+  <view class="page-section">
+    <view wx:if="{{kouling!='' && title!='' && txt != '' && imgs.length != 0}}" class="weui-btn-area">
+      <button class="weui-btn" type="primary" bindtap="done">确定提交</button>
+    </view>
+  </view>
+</view>

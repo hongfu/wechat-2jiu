@@ -27,3 +27,8 @@
   margin: 8rpx 24rpx;
   border-radius: 50%;
 }
+
+.info-detail-img{
+  width: 100%;
+  height: 600px;
+}

@@ -62,3 +62,9 @@
   background: no-repeat 50%;
   background-size: cover;
 }
+
+.mylist-item-btns-group{
+  position: relative;
+  display: flex;
+  padding-bottom: 20rpx;
+}

@@ -25,16 +25,10 @@ Page({
       })
     }
   },
-  onUnload: function () {
+  onPullDownRefresh: function(){
+    this.getInfos()
+    wx.stopPullDownRefresh()
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-
   getInfos: function () {
     var that = this
     net.post('/info/list')
@@ -46,20 +40,21 @@ Page({
           store.set('infos',res).then((store.set('iExTm',new Date().getTime()+60*1000)))
       })
   },
-
-  toAbout: function () {
-    getApp().toPage('about')
-  },
   toInfo: function (e) {
     getApp().toPage('info',{id:e.currentTarget.id})
   },
   previewImage: function(e){
-    var that = this
-    const id = e.currentTarget.id
-    wx.previewImage({
-        current: that.data.infos[id].imgs[0], // 当前显示图片的http链接
-        urls: that.data.infos[id].imgs // 需要预览的图片http链接列表
-    })
-}
-
+      var that = this
+      const id = e.currentTarget.id
+      wx.previewImage({
+          current: that.data.infos[id].imgs[0], // 当前显示图片的http链接
+          urls: that.data.infos[id].imgs // 需要预览的图片http链接列表
+      })
+  },
+  toLiuyan: function () {
+    getApp().toPage('liuyan')
+  },
+  toMy(){
+    getApp().toPage('my')
+  }
 })

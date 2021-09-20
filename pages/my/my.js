@@ -12,7 +12,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    getApp().needLogin()
+   
   },
 
   /**
@@ -63,7 +63,6 @@ Page({
   onShareAppMessage: function () {
 
   },
-  toHome: function () {getApp().toPage('infos',{force:true})},
   toNew: function () {getApp().toPage('liuyan')},
   toMyList: function () {getApp().toPage('mylist')}
 })

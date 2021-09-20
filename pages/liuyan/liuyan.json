@@ -1,4 +1,5 @@
 {
-  "navigationBarTitleText": "留言给她",
-  "usingComponents": {}
+  "usingComponents": {
+    "switch-btn": "../../components/switch_btn"
+  }
 }

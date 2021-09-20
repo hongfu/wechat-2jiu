@@ -1,14 +1,14 @@
 <!--pages/my/my.wxml-->
-<view class="page">
-  <view bindtap="toHome" class="nav-title">
-    <image class="app-logo" src="../../img/app_logo.png" mode="cover"></image>
-    <text>更多</text>
-  </view>
+<import src="../tmpl/tmpl"></import>
+<view class="page-body">
+  <template is="nav-txt" data="{{txt: '我的'}}" />
   <view class="container">
-    <open-data type="userAvatarUrl"></open-data>
+    <view class="user-avatar-big">
+      <open-data type="userAvatarUrl"></open-data>
+    </view>
     <view class="btn-grid">
-      <button bindtap="toNew"> 添加二手 </button>
-      <button bindtap="toMyList"> 我的二手 </button>
+      <button bindtap="toNew"> 发闲置 </button>
+      <button bindtap="toMyList"> 我的 </button>
     </view>
   </view>
 </view>

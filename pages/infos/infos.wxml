@@ -1,16 +1,13 @@
 <!--pages/infos/infos.wxml-->
+<import src="../tmpl/tmpl"></import>
 <view class="page-body">
-  <view bindtap="toAbout" class="nav-title">
-    <image class="app-logo" src="../../img/app_logo.png" mode="cover"></image>
-    <text>{{appInfo.title}}({{infos.length}})</text>
-  </view>
+<template is="nav-txt" data="{{txt: appInfo.title,listcount: infos.length}}" />
+
   <block wx:for="{{infos}}" wx:key="this">
     <view class="weui-panel weui-panel_access" id="{{index}}">
       <view class="weui-panel__bd">
         <view class="weui-media-box weui-media-box_appmsg">
-          <!-- <view class="weui-media-box__hd">
-            标签
-          </view> -->
+          <!-- <view class="weui-media-box__hd">标签</view> -->
           <view class="weui-media-box__bd" bindtap="previewImage" id="{{index}}">
               <view class="weui-uploader__files imgs-{{item.imgs.length}}">
                 <block wx:if="{{item.imgs.length == 1}}">
@@ -38,10 +35,8 @@
           </view>
         </view>
         <view bindtap="toInfo" id="{{item.infoid}}" class="weui-media-box weui-media-box_text">
-          <view>
-            <h4 class="weui-media-box__title">{{item.title}}</h4>
-            <view class="weui-media-box__desc">{{item.txt}}</view>
-          </view>
+            <h4 wx:if="{{item.title}}" class="weui-media-box__title">{{item.title}}</h4>
+            <view wx:if="{{item.txt}}" class="weui-media-box__desc">{{item.txt}}</view>
           <view class="weui-media-box__info">
             <view class="weui-media-box__info__meta">
               <image class="avatar" src="{{item.avatar_url}}" mode="cover"></image>
@@ -58,4 +53,5 @@
   <view class="weui-loadmore weui-loadmore_line weui-loadmore_dot">
     <text class="weui-loadmore__tips"></text>
   </view>
+  <view bindlongtap="toMy" bindtap="toLiuyan" class="btn-toLiuyan" style="opacity: 50%;">+</view>
 </view>

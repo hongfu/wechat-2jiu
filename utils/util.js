@@ -172,6 +172,7 @@ class store{
 }
 
 class ui{
+
   static queren(...params){
     const [title,txt,cb] = params
     wx.showModal({
@@ -184,6 +185,23 @@ class ui{
           cb()
         } else if (res.cancel) {
           console.log('用户点击取消')
+        }
+      }
+    })
+  }
+
+  static xuanze(...params){
+    const [title,txt,btn_right,right_cb,btn_left,left_cb] = params
+    wx.showModal({
+      confirmText: btn_right,
+      cancelText: btn_left,
+      title: title,
+      content: txt,
+      success (res) {
+        if (res.confirm) {
+          right_cb()
+        } else if (res.cancel) {
+          left_cb()
         }
       }
     })

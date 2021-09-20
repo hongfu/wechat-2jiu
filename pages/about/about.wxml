@@ -1,10 +1,8 @@
 <!--index.wxml-->
+<import src="../tmpl/tmpl"></import>
+<template is="nav-txt" data="{{txt: appInfo.title}}" />
 <view class="container">
-  <view bindtap="toHome" class="appinfo">
-    <image class="app-logo" src="../../img/app_logo.png" mode="cover"></image>
-    <text class="title">{{appInfo.title}}</text>
-  </view>
-
+  <image class="app-logo" src="../../img/app_logo.png" mode="cover"></image>
   <view class="motto">
     <text user-select="false">{{appInfo.motto}}</text>
     <progress bindactiveend="buttonShow" percent="{{progre}}" active active-mode="forwards" />

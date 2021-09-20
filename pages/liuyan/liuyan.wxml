@@ -1,28 +1,12 @@
 <!--liuyan.wxml-->
+<import src="../tmpl/tmpl"></import>
 <view class="page-body">
-  <view bindtap="toMy" class="nav-title">
-    <image bindtap="bindViewTap" class="app-logo" src="../../img/app_logo.png" mode="cover"></image>
-    <text class="userinfo-nickname">信息录入</text>
-  </view>
-  <view class="page-section">
-    <view class="weui-cells__title"><text class="weui-badge weui-badge_dot"></text>标题({{title_length}}/30)</view>
-    <view class="weui-cells weui-cells_after-title">
-      <view class="weui-cell weui-cell_input">
-        <input id="title" bindinput="someInput" class="weui-input" value="{{title}}" auto-focus placeholder="输入标题文字" maxlength="30" />
-      </view>
-    </view>
-  </view>
-  <view class="page-section">
-    <view class="weui-cells__title"><text class="weui-badge weui-badge_dot"></text>描述({{txt_length}}/150)</view>
-    <view class="weui-cells weui-cells_after-title">
-      <view class="weui-cell weui-cell_input">
-        <textarea value="{{txt}}" id="txt" bindinput="someInput" auto-height placeholder="在这里添加描述" maxlength="150" />
-      </view>
-    </view>
-  </view>
-  <view class="page-section">
-    <view class="weui-cells__title"><text class="weui-badge weui-badge_dot"></text>图片上传({{imgs_length}}/5)</view>
-    <view class="weui-cells weui-cells_after-title">
+<template is="nav-txt" data="{{txt: '发闲置'}}" />
+
+<view class="page-section">
+    <view class="page-section">
+    <view class="weui-cells__title"><text class="weui-badge weui-badge_dot"></text>信息图片能说明一切({{imgs_length}}/5)：</view>
+    <view class="weui-cells">
       <view class="weui-uploader__bd">
         <view class="weui-uploader__files" id="uploaderFiles">
           <block wx:for="{{imgs}}" wx:key="*this">
@@ -37,10 +21,24 @@
       </view>
     </view>
   </view>
+    <view class="weui-cells__title">还要补充：</view>
+    <view class="weui-cells">
+      <view class="weui-cell weui-cell_active">
+                <view class="weui-cell__bd">
+                    <textarea  value="{{txt}}" id="txt" bindinput="someInput" placeholder="写在这里..." maxlength="150" class="weui-textarea" placeholder-class="weui-input__placeholder" style="height: 3.3em" />
+                    <view class="weui-textarea-counter">{{txt_length}}/150</view>
+                </view>
+            </view>
+    </view>
+  </view>
+
   <view class="page-section">
-    <view class="weui-cells__title">设置</view>
-    <view class="weui-cells weui-cells_after-title">
-      <view class="weui-cell weui-cell_active weui-cell_switch">
+    <view class="weui-cells__title">更多设置：</view>
+    <view class="weui-cells status-group">
+      <switch-btn id="can_sale" bindtap="changeStatus" value="{{can_sale}}">转出</switch-btn>
+      <switch-btn id="can_exchange" bindtap="changeStatus" value="{{can_exchange}}">交换</switch-btn>
+      <switch-btn id="can_give" bindtap="changeStatus" value="{{can_give}}">赠送</switch-btn>
+      <!-- <view class="weui-cell weui-cell_active weui-cell_switch">
         <view class="weui-cell__bd">可以转出</view>
         <view class="weui-cell__ft">
           <label class="weui-switch-cp">
@@ -75,7 +73,7 @@
             <view class="weui-switch-cp__box"></view>
           </label>
         </view>
-      </view>
+      </view> -->
     </view>
   </view>
   <view class="page-section">
@@ -90,7 +88,7 @@
     </view>
   </view>
   <view class="page-section">
-    <view wx:if="{{kouling!='' && title!='' && txt != '' && imgs.length != 0}}" class="weui-btn-area">
+    <view wx:if="{{kouling!='' && imgs.length > 0}}" class="weui-btn-area">
       <button class="weui-btn" type="primary" bindtap="done">确定提交</button>
     </view>
   </view>

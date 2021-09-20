@@ -1,20 +1,17 @@
 /* pages/about/about.wxss */
-.appinfo {
-  margin-top: 200rpx;
-  width: 300rpx;
-  height: 300rpx;
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #777777;
-  border: 2rpx solid darkgreen ;
-  border-radius: 50%;
-}
+  justify-content: space-between;
+  padding: 60rpx 0;
+  box-sizing: border-box;
+} 
 
 .app-logo {
   overflow: hidden;
-  width: 160rpx;
-  height: 160rpx;
+  width: 260rpx;
+  height: 260rpx;
 }
 
 .motto {

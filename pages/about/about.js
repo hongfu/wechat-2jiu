@@ -12,7 +12,7 @@ Page({
     isLogin: false
   },
 
-  onLoad: function () {
+  onLoad: function (options) {
     var that = this
 
     getApp().globalData.isLogin
@@ -62,58 +62,8 @@ Page({
       }
     })
   },
-
-  // wxlogin: function () {
-  //   var that = this
-  //   // 登录
-  //   wx.login({
-  //     success: res => {
-  //       const wxdata = res
-  //       // 发送 res.code 到后台换取 openId, sessionKey, unionId
-  //       net.post('/user/wxlogin',wxdata).then(res=>{
-  //         //处理和保存回传内容
-  //         app.globalData.userInfo = res.data.result[0]
-  //         that.setData({ 
-  //           progre: 100,
-  //           isLogin: true
-  //          })
-  //         store.set('2jtk',res.result[0].token)
-  //       })
-        
-  //       // wx.request({
-  //       //   url: config.API+'/user/wxlogin',
-  //       //   method: 'POST',
-  //       //   data: wxdata,
-  //       //   success(res) {
-  //       //     if (res.data.code === 1) {
-  //       //       //处理和保存回传内容
-  //       //       app.globalData.userInfo = res.data.result[0]
-  //       //       that.setData({ 
-  //       //         progre: 100,
-  //       //         isLogin: true
-  //       //        })
-  //       //       store.set('2jtk',res.result[0].token)
-  //       //     }
-  //       //     else if (res.data.code === -1) {
-  //       //       //用户未找到，显示登录按钮
-  //       //       that.setData({
-  //       //         unRegistered: true
-  //       //       })
-  //       //     }
-
-  //       //   },
-  //       //   fail(err) {
-  //       //     console.log(err)
-  //       //   }
-  //       // })
-  //     }
-  //   })
-  // },
   toMy: function(){
     getApp().toPage('my')
-  },
-  toHome: function(){
-    getApp().toPage('infos')
   },
   buttonShow: function(){
     this.setData({

@@ -1,5 +1,7 @@
 // app.js
 import { net, store } from "./utils/util";
+const authPages =['my','mylist','liuyan']
+
 App({
   onLaunch() {
     var that = this
@@ -25,11 +27,12 @@ App({
       store.set('2jtk',that.globalData.userInfo.token)
     })
   },
-  needLogin: function () {
-    this.globalData.isLogin || this.toPage('about')
-  },
+  // needLogin: function () {
+  //   this.globalData.isLogin || this.toPage('about')
+  // },
   toPage: function(...params){
     const [page,data] = params
+
     const objtoquery = function (d) {
       let ret=''
       const props = Object.getOwnPropertyNames(d)
@@ -39,11 +42,18 @@ App({
       }
       return ret
     }
-    const url = data ? '/pages/'+page+'/'+page + objtoquery(data) : '/pages/'+page+'/'+page
-    console.log('toPage:  '+url)
-    wx.redirectTo({
-      url: url,
-    })
+    console.log('toPage:  ' + page)
+    if(getApp().globalData.isLogin || authPages.indexOf(page)==-1){
+      const url = data ? '/pages/'+page+'/'+page + objtoquery(data) : '/pages/'+page+'/'+page
+      console.log('toPage:  '+url)
+      wx.navigateTo({
+        url: url,
+      })
+    }else{
+      wx.navigateTo({
+        url: '/pages/about/about',
+      })
+    }
   },
   globalData: {
   }

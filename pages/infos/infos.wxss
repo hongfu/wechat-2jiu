@@ -1,7 +1,7 @@
 /* pages/infos/infos.wxss */
 .avatar{
-  width: 60rpx;
-  height: 60rpx;
+  width: 48rpx;
+  height: 48rpx;
   border-radius: 50%;
 }
 
@@ -13,14 +13,17 @@
 .weui-panel::before,.weui-panel::after{
   content: none;
 }
-
+.weui-media-box::before {
+  content: none;
+}
 .weui-media-box__title{
   padding-bottom: 16rpx;
   font-size: 44rpx;
 }
 .weui-media-box__desc{
   padding-bottom: 16rpx;
-  font-size: 32rpx;
+  font-size: 34rpx;
+  color: #3b3b3b;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -32,6 +35,10 @@
 }
 .weui-media-box__info__meta{
   font-size: 32rpx;
+}
+.weui-media-box__info__meta_extra {
+  padding-left: 1em;
+  border: none;
 }
 
 .img-single {
@@ -61,4 +68,20 @@
   height: 198rpx;
   background: no-repeat 50%;
   background-size: cover;
+}
+
+.btn-toLiuyan{
+  position: fixed;
+  right: 32rpx;
+  bottom: 32rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: var(--j-action);
+  font-size: 3em;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

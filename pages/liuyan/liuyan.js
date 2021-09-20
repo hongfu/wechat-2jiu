@@ -3,9 +3,7 @@ import { net,store,ui } from "../../utils/util";
 
 Page({
   data: {
-    title: '',
-    title_length: 0,
-    txt: '',
+    txt: null,
     txt_length: 0,
     imgs: [],
     imgs_length: 0,
@@ -18,8 +16,9 @@ Page({
   },
   onLoad(options) {
     var that = this
-    getApp().needLogin()
-    if(options.infoid){
+   
+    if(options.infoid){//from url
+      this.data.fromPage = '/pages/info/info'
       this.data.infoid = options.infoid
       net.post('/info/id/'+this.data.infoid)
       .then(res=>{
@@ -45,6 +44,7 @@ Page({
   },
   onShow(){
     var that = this
+
     //检查退出缓存
     !this.data.infoid && store.pop('lsti').then(res=>{
       if(res!=null){
@@ -77,7 +77,17 @@ Page({
       obj[lengthKey] = e.detail.value.length
     }
     that.setData(obj)
+  },  
+  changeStatus(e){
+    console.log(e)
+    var that = this
+    that.data.done = false
+    const key = e.currentTarget.id
+    let obj = new Object()
+    obj[key] = !that.data[key]
+    that.setData(obj)
   },
+
   chooseImg(){
     var that = this
     that.data.done = false
@@ -136,22 +146,32 @@ Page({
               net.post('/info/modify/'+that.data.infoid,data)
               .then(result=>{
                 that.data.done = true
-                wx.showToast({
-                  mask: true,
-                  title: '信息已修改成功',
-                  icon: 'success',
-                  duration: 2000
+                ui.xuanze('提示','你是要继续上新，还是去预览？',
+                '继续上新',()=>{
+                  wx.redirectTo({
+                    url: '/pages/liuyan/liuyan',
+                  })
+                },
+                '预览成果',()=>{
+                  wx.redirectTo({
+                    url: '/pages/mylist/mylist',
+                  })
                 })
               })
             }else{
               net.post('/info/insert',data)
               .then(result=>{
                 that.data.done = true
-                wx.showToast({
-                  mask: true,
-                  title: '信息已添加成功',
-                  icon: 'success',
-                  duration: 2000
+                ui.xuanze('提示','你是要继续上新，还是去预览？',
+                '继续上新',()=>{
+                  wx.redirectTo({
+                    url: '/pages/liuyan/liuyan',
+                  })
+                },
+                '预览成果',()=>{
+                  wx.redirectTo({
+                    url: '/pages/mylist/mylist',
+                  })
                 })
               })
             }

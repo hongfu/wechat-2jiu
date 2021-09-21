@@ -1,4 +1,4 @@
 <!-- 这是自定义组件的内部WXML结构 -->
-<view bindtap="change" value="{{value}}" class="switch-btn {{value==true ? 'switch-btn-choose' : 'switch-btn-unchoose'}}">
+<view value="{{value}}" class="switch-btn {{value==true ? 'switch-btn-choose' : 'switch-btn-unchoose'}}">
   <text class="switch-btn_text"><slot></slot></text>
 </view>

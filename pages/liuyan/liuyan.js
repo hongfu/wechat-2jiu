@@ -8,52 +8,23 @@ Page({
     imgs: [],
     imgs_length: 0,
     kouling: '',
-    can_sale: true,
-    sale_price: 0,
-    can_exchange: false,
-    can_give: false,
+    // can_sale: true,
+    // sale_price: 0,
+    // can_exchange: false,
+    // can_give: false,
     done: true
   },
-  onLoad(options) {
-    var that = this
-   
-    if(options.infoid){//from url
-      this.data.fromPage = '/pages/info/info'
-      this.data.infoid = options.infoid
-      net.post('/info/id/'+this.data.infoid)
-      .then(res=>{
-        res = res[0]
-        that.setData({
-          can_exchange: res.can_exchange,
-          can_sale: res.can_sale,
-          can_give: res.can_give,
-          sale_price: res.sale_price,
-          kouling: res.kouling,
-          title: res.title,
-          title_length: res.title.length,
-          txt: res.txt,
-          txt_length: res.txt.length,
-          imgs: res.imgs,
-          imgs_length: res.imgs.length,
-        })
-        })
-    }
-  },
   onUnload(){
-    !this.data.infoid && this.data.done==false && store.set('lsti',this.data)
+    this.data.done==false && store.set('lsti',this.data)
   },
   onShow(){
     var that = this
 
     //检查退出缓存
-    !this.data.infoid && store.pop('lsti').then(res=>{
+    store.pop('lsti').then(res=>{
       if(res!=null){
         ui.queren('提示','有未完成的信息，是否继续？',()=>{
           that.setData({
-            can_exchange: res.can_exchange,
-            can_sale: res.can_sale,
-            can_give: res.can_give,
-            sale_price: res.sale_price,
             kouling: res.kouling,
             title: res.title,
             title_length: res.title_length,
@@ -78,16 +49,15 @@ Page({
     }
     that.setData(obj)
   },  
-  changeStatus(e){
-    console.log(e)
-    var that = this
-    that.data.done = false
-    const key = e.currentTarget.id
-    let obj = new Object()
-    obj[key] = !that.data[key]
-    that.setData(obj)
-  },
-
+  // changeStatus(e){
+  //   console.log(e)
+  //   var that = this
+  //   that.data.done = false
+  //   const key = e.currentTarget.id
+  //   let obj = new Object()
+  //   obj[key] = !that.data[key]
+  //   that.setData(obj)
+  // },
   chooseImg(){
     var that = this
     that.data.done = false
@@ -120,10 +90,6 @@ Page({
   },
   submitInfo(that,modify=false){
     let data = {
-      can_exchange: that.data.can_exchange,
-      can_sale: that.data.can_sale,
-      can_give: that.data.can_give,
-      sale_price: that.data.sale_price,
       kouling: that.data.kouling,
       title: that.data.title,
       txt: that.data.txt,
@@ -142,23 +108,6 @@ Page({
         c--
         if(c===0){
           data.imgs = imgs
-            if(modify){
-              net.post('/info/modify/'+that.data.infoid,data)
-              .then(result=>{
-                that.data.done = true
-                ui.xuanze('提示','你是要继续上新，还是去预览？',
-                '继续上新',()=>{
-                  wx.redirectTo({
-                    url: '/pages/liuyan/liuyan',
-                  })
-                },
-                '预览成果',()=>{
-                  wx.redirectTo({
-                    url: '/pages/mylist/mylist',
-                  })
-                })
-              })
-            }else{
               net.post('/info/insert',data)
               .then(result=>{
                 that.data.done = true
@@ -174,7 +123,7 @@ Page({
                   })
                 })
               })
-            }
+            //}
         }
       }
       )
@@ -182,11 +131,7 @@ Page({
   },
   done: function(){
     var that = this
-    if(that.data.infoid){
-      ui.queren('提示','确定要修改信息么？',()=>{that.submitInfo(that,true)})
-    }else{
-      ui.queren('提示','作为新信息提交？',()=>{that.submitInfo(that)})
-    }
+    ui.queren('提示','作为新信息提交？',()=>{that.submitInfo(that)})
   },
   toMy: function(){
     getApp().toPage('my')

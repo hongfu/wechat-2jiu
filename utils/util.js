@@ -16,7 +16,7 @@
 
 //////////////////////
 
-const ENV = ('pro' == 'dev') ? 'http://127.0.0.1:3000/wx' : 'https://api.zhaduir.ren/wx'
+const ENV = ('dev' == 'dev') ? 'http://127.0.0.1:3000/wx' : 'https://api.zhaduir.ren/wx'
 const config = {
   API: ENV,
 }

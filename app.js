@@ -1,6 +1,6 @@
 // app.js
 import { net, store } from "./utils/util";
-const authPages =['my','mylist','liuyan']
+const authPages =['my','mylist','liuyan','editinfo']
 
 App({
   onLaunch() {

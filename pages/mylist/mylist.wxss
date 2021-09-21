@@ -68,3 +68,9 @@
   display: flex;
   padding-bottom: 20rpx;
 }
+
+.manage-status-group{
+  padding: 24rpx;
+  display: flex;
+  flex-direction: row;
+}

@@ -1,11 +1,11 @@
 <!--liuyan.wxml-->
 <import src="../tmpl/tmpl"></import>
 <view class="page-body">
-<template is="nav-txt" data="{{txt: '发闲置'}}" />
+<template is="nav-txt" data="{{txt: '编辑信息'}}" />
 
 <view class="page-section">
     <view class="page-section">
-    <view class="weui-cells__title"><text class="weui-badge weui-badge_dot"></text>信息图片能说明一切({{imgs_length}}/5)：</view>
+    <view class="weui-cells__title"><text class="weui-badge weui-badge_dot"></text>信息图片({{imgs_length}}/5)：</view>
     <view class="weui-cells">
       <view class="weui-uploader__bd">
         <view class="weui-uploader__files" id="uploaderFiles">
@@ -21,7 +21,7 @@
       </view>
     </view>
   </view>
-    <view class="weui-cells__title">还要补充：</view>
+    <view class="weui-cells__title">编辑补充信息：</view>
     <view class="weui-cells">
       <view class="weui-cell weui-cell_active">
                 <view class="weui-cell__bd">
@@ -40,18 +40,7 @@
       <switch-btn id="can_give" bindtap="changeStatus" value="{{can_give}}">赠送</switch-btn>
     </view>
   </view> -->
-  <view class="page-section">
-    <view class="weui-cell weui-cell_active">
-      <view class="weui-cell__hd">
-        <view class="weui-label"><text class="weui-badge weui-badge_dot"></text>口令</view>
-      </view>
-      <view class="weui-cell__bd">
-        <input class="weui-input" value="{{kouling}}" id="kouling" bindinput="someInput" placeholder-class="weui-input__placeholder"
-          placeholder="请输入口令" />
-      </view>
-    </view>
-  </view>
-  <view wx:if="{{kouling!='' && imgs.length > 0}}" class="page-section">
-    <button bindtap="done">新信息提交</button>
+  <view wx:if="{{imgs.length > 0}}" class="page-section">
+    <button bindtap="done">提交修改</button>
   </view>
 </view>

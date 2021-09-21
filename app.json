@@ -10,6 +10,7 @@
     "pages/infos/infos",
     "pages/mylist/mylist",
     "pages/liuyan/liuyan",
+    "pages/editinfo/editinfo",
     "pages/info/info",  
     "pages/about/about",
     "pages/my/my"
@@ -20,7 +21,7 @@
     "navigationBarTitleText": "Weixin",
     "navigationBarTextStyle":"black",
     "navigationStyle": "custom",
-    "enablePullDownRefresh": true
+    "enablePullDownRefresh": false
   },
   "useExtendedLib": {
     "weui": true

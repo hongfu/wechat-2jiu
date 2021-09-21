@@ -2,12 +2,10 @@ const { net } = require("../../utils/util")
 
 // pages/info/info.js
 Page({
-  data: {
-    id: null,
-  },
+  data: {},
   onLoad: function (options) {
     var that = this
-    getApp().globalData.isLogin && that.setData({userid:getApp().globalData.userInfo.userid})
+    //getApp().globalData.isLogin && that.setData({userid:getApp().globalData.userInfo.userid})
     const {id} = options
     net.post('/info/id/'+id)
     .then(res=>{

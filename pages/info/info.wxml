@@ -11,7 +11,7 @@
             id="{{info.infoid}}">编辑此条信息</button>
         </view> -->
         <view class="weui-media-box__info">
-          <view wx:if="{{info.can_sale}}" class="weui-media-box__info__meta">￥ {{info.sale_price}}</view>
+          <view wx:if="{{info.can_sale}}" class="weui-media-box__info__meta">转让</view>
           <view wx:if="{{info.can_exchange}}" class="weui-media-box__info__meta">交换</view>
           <view wx:if="{{info.can_give}}" class="weui-media-box__info__meta">赠与</view>
         </view>
@@ -32,12 +32,8 @@
         </view>
         <view class="weui-article__p">
           <block wx:for="{{comments}}" wx:key="this">
-            <view class="weui-media-box__info">
-              <view class="weui-media-box__info__meta">
-                <image class="avatar" src="{{item.avatar_url}}" mode="aspectFit" id="{{index}}" />
-              </view>
-              <text class="weui-media-box__info__meta">{{item.comment}}</text>
-              <text class="weui-media-box__info__meta">{{item.formattime}}</text>
+            <view class="view-comments">
+                <image class="avatar" src="{{item.avatar_url}}" mode="aspectFit" id="{{index}}" />{{item.comment}}{{item.formattime}}
             </view>
           </block>
         </view>

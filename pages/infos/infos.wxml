@@ -7,7 +7,6 @@
     <view class="weui-panel weui-panel_access" id="{{index}}">
       <view class="weui-panel__bd">
         <view class="weui-media-box weui-media-box_appmsg">
-          <!-- <view class="weui-media-box__hd">标签</view> -->
           <view class="weui-media-box__bd" bindtap="previewImage" id="{{index}}">
               <view class="weui-uploader__files imgs-{{item.imgs.length}}">
                 <block wx:if="{{item.imgs.length == 1}}">
@@ -50,7 +49,7 @@
       </view>
     </view>
   </block>
-  <view class="weui-loadmore weui-loadmore_line weui-loadmore_dot">
+  <view class="weui-loadmore">
     <text class="weui-loadmore__tips"></text>
   </view>
   <view bindlongtap="toMy" bindtap="toLiuyan" class="btn-toLiuyan" style="opacity: 50%;">+</view>

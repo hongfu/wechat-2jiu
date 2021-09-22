@@ -77,10 +77,9 @@
   width: 100rpx;
   height: 100rpx;
   border-radius: 50%;
-  background-color: #ffffff;
-  color: var(--j-action);
+  background-color:var(--j-action);
+  color:  #ffffff;
   font-size: 3em;
-  font-weight: 600;
   display: flex;
   justify-content: center;
   align-items: center;

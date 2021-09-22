@@ -2,7 +2,8 @@
 .switch-btn{
   width: 120rpx;
   height: 120rpx;
-  border: 4rpx solid #339c66;
+  background-color: #EBEBEB;
+  border: none;
   border-radius: 16rpx;
   display: flex;
   flex-direction: column;
@@ -12,16 +13,15 @@
   margin-right: 20rpx;
 }
 .switch-btn-choose{
-  border: 4rpx solid #339c66;
-  color:  #339c66;
+  background-color:  #07c160;
 }
 .switch-btn-unchoose{
-  border: 4rpx solid #cccccc;
-  color:  #cccccc;
+  background-color:  #EBEBEB;
 }
 .switch-btn_text{
   font-weight: 600;
   font-size: 1.2em;
   width: 2em;
   text-align: center;
+  color: #BBBBBB;
 }

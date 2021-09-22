@@ -4,8 +4,11 @@ Component({
     value: {
       type: Boolean,
       value: false
+    },
+    activeColor: {
+      type: String,
+      value: "#09BB07"
     }
-
   },
   data: {
   },
